@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <title>Main Menu [Game Name]</title>
+    </head>
+    <body>
+        
+        <center>
+            <a href="https://www.fontspace.com/category/minecraft"><img src="https://see.fontimg.com/api/renderfont4/VGORe/eyJyIjoiZnMiLCJoIjo2NSwidyI6MTAwMCwiZnMiOjY1LCJmZ2MiOiIjMDAwMDAwIiwiYmdjIjoiI0ZGRkZGRiIsInQiOjF9/R0FNRSBUSVRMRQ/minecraft-ten.png" alt="Minecraft fonts"></a>
+            <div id="playOptions">
+                <a href="index.html"><button>Single Player</button></a><br>
+                <a href="hostServerIndex.html"><button>Host Server</button></a>
+                <a href="clientServerIndex.html"><button>Join Server</button><br></a>
+            </div>
+        </center>
+
+        <style>
+            body {
+                background-color: black;
+                overflow: hidden;
+            }
+            canvas {
+                position: absolute;
+                top: 0;
+                z-index: -1;
+            }
+            #playOptions {
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+            button {
+                font-size: xx-large;
+                margin-top: 10%;
+            }
+            center {
+                margin-top: 5%;
+            }
+        </style>
+        <script src=".\node_modules\three\build\three.js"></script>
+        <script src="mainMenuBackground.js"></script>
+    </body>
+</html>
