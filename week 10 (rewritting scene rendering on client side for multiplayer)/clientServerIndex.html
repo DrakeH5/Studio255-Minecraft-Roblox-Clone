@@ -1,0 +1,36 @@
+<html>
+    <head><script src=".\node_modules\three\build\three.js"></script><script src="https://cdn.socket.io/socket.io-3.0.0.js"></script></head>
+    <body>
+        <div id="chatDiv">
+            <div id="messages"></div>
+            <input type="text" id="chatInput" placeholder="Chat">
+        </div>
+        <style>
+            body {
+                margin: 0;
+                height: 100vh;
+            }
+            canvas {
+                display: block;
+            }
+            #chatDiv {
+                z-index: 1;
+                position: absolute;
+                bottom: 20;
+                left: 20;
+            }
+        </style>
+        <script src="clientServerScript.js"></script>
+        <script>
+            document.getElementById("chatInput").addEventListener("keypress", function(evt) {
+                if(event.key == "Enter"){
+                   socket.emit("chatInput", document.getElementById("chatInput").value)
+                   document.getElementById("chatInput").value = ""
+                }
+            })
+            socket.on("chatOutput", data => {
+                document.getElementById("messages").innerHTML += "<p>" + data + "</p>"
+            })
+        </script>
+    </body>
+</html>
