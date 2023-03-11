@@ -25,6 +25,19 @@ ground.position.y = -1
 scene.add(ground);
 
 
+var geometry = new THREE.BoxGeometry(0.5, 7, 0.5); 
+var material = new THREE.MeshLambertMaterial({color: "brown"}); 
+var treetrunk = new THREE.Mesh(geometry, material);
+treetrunk.position.z = -3;
+scene.add(treetrunk);
+var geometry = new THREE.BoxGeometry(3, 2, 3); 
+var material = new THREE.MeshLambertMaterial({color: "green"}); 
+var treeleaves = new THREE.Mesh(geometry, material);
+treeleaves.position.z = -3;
+treeleaves.position.y = 3.5;
+scene.add(treeleaves);
+
+
 var nbmOfHills = 3;
 for(var i=0; i<nbmOfHills; i++){
   for(var j=-2; j<4; j+=0.1){
