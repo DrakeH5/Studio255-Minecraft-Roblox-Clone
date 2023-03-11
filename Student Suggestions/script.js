@@ -48,8 +48,17 @@ var gravity = 0.2
 var playerHeight = 2
 
 var render = function() {
+  var direction = new THREE.Vector3();
+    camera.getWorldDirection( direction );
+  raycaster.set(camera.position, direction);
+          var intersects = raycaster.intersectObjects(scene.children);
+          if(intersects.length>0) {
+            if(intersects[0].distance<1) {
+                camera.position.y+=playerHeight;
+            }
+          }
   raycaster.set(camera.position, downDirection);
-          const intersects = raycaster.intersectObjects(scene.children);
+          var intersects = raycaster.intersectObjects(scene.children);
           if(intersects.length>0) {
             if(intersects[0].distance>playerHeight-1) {
                 camera.position.y-=gravity;
