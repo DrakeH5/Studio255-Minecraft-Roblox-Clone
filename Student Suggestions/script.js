@@ -49,6 +49,16 @@ for(var i=0; i<nbmOfHills; i++){
   }
 }
 
+for(var i=0; i<60; i++){
+  for(var j=0; j<10; j++){
+    var geometry = new THREE.BoxGeometry(0.1, 0.2, 0.1); 
+    var material = new THREE.MeshLambertMaterial({color: "green"}); 
+    var grass = new THREE.Mesh(geometry, material);
+    grass.position.set(i*0.2, 0, j*0.2-4)
+    scene.add(grass);
+  }
+}
+
 
 var light = new THREE.PointLight(0xFFFFFF, 1, 500); 
 light.position.set(0, 30, 0);
