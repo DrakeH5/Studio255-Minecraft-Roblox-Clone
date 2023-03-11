@@ -38,8 +38,12 @@ for(var i=0; i<nbmOfHills; i++){
 
 
 var light = new THREE.PointLight(0xFFFFFF, 1, 500); 
-light.position.set(10, 10, 0);
+light.position.set(0, 30, 0);
 scene.add(light);
+var sungeometry = new THREE.SphereGeometry(1); 
+var material = new THREE.MeshLambertMaterial({color: 0xFFCC00}); 
+var sun = new THREE.Mesh(sungeometry, material);
+scene.add(sun);
 
 
 var raycaster = new THREE.Raycaster();
@@ -47,7 +51,10 @@ var downDirection = new THREE.Vector3( 0, -1, 0)
 var gravity = 0.2
 var playerHeight = 2
 
+var timePassed = 0;
 var render = function() {
+  light.position.set(0, Math.sin(timePassed)*30, Math.cos(timePassed)*30)
+  sun.position.set(light.position.x, light.position.y+3, light.position.z)
   var direction = new THREE.Vector3();
     camera.getWorldDirection( direction );
   raycaster.set(camera.position, direction);
@@ -66,6 +73,7 @@ var render = function() {
           }
     requestAnimationFrame(render);
     renderer.render(scene, camera); 
+    timePassed+=0.001;
 }
 
 render();
